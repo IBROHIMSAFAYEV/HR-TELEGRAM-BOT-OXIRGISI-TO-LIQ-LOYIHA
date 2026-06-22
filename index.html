@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<title>TechCorp HR</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ═══════════════════════ PAGE: HOME ═══════════════════════ -->
+  <div class="page active" id="pg-home">
+    <div class="topbar">
+      <div class="topbar-row">
+        <div>
+          <div class="topbar-title">Kunleek</div>
+          <div class="topbar-sub" data-k="hr_platform">HR Platform</div>
+        </div>
+        <div class="lang-btn" onclick="openLang()">
+          <i class="ti ti-world" style="font-size:14px;"></i>
+          <span id="langLabel">UZ</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll" id="homeScroll">
+      <div class="company-hero">
+        <div class="co-name">HR Global</div>
+        <div class="co-tag" data-k="tagline">Innovatsiya bilan kelajakni quramiz</div>
+        <div class="co-stats">
+          <div class="co-stat"><div class="co-num">1,200+</div><div class="co-lbl" data-k="employees">Xodimlar</div></div>
+          <div class="co-stat"><div class="co-num">12</div><div class="co-lbl" data-k="offices">Ofislar</div></div>
+          <div class="co-stat"><div class="co-num">2009</div><div class="co-lbl" data-k="founded">Asos.</div></div>
+        </div>
+      </div>
+
+      <div class="section-lbl" data-k="about_co">Kompaniya haqida</div>
+      <div class="card">
+        <div class="info-row">
+          <div class="info-ico"><i class="ti ti-building"></i></div>
+          <div><div class="info-k" data-k="industry">Soha</div><div class="info-v">IT & Software Development</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><i class="ti ti-map-pin"></i></div>
+          <div><div class="info-k" data-k="hq">Bosh ofis</div><div class="info-v">Toshkent, O'zbekiston</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><i class="ti ti-world"></i></div>
+          <div><div class="info-k" data-k="website">Veb-sayt</div><div class="info-v" style="color:var(--red);">www.techcorp.uz</div></div>
+        </div>
+        <div class="info-row">
+          <div class="info-ico"><i class="ti ti-mail"></i></div>
+          <div><div class="info-k" data-k="contact">Aloqa</div><div class="info-v">hr@techcorp.uz</div></div>
+        </div>
+      </div>
+
+      <div class="section-lbl" data-k="mission">Missiya</div>
+      <div class="card">
+        <p style="font-size:13px; line-height:1.7; color:var(--hint);" data-k="mission_text">Biz zamonaviy texnologiyalar orqali biznes va jamiyatni raqamlashtirish yo'lida ishlaymiz. Har bir xodimimiz kelajakning qurilmasi.</p>
+      </div>
+
+      <div class="quick-grid">
+        <div class="quick-card" onclick="goPage('pg-jobs','pg-home')">
+          <i class="ti ti-briefcase"></i>
+          <div class="qt" data-k="vacancies">Vakansiyalar</div>
+          <div class="qs" data-k="open_pos">9 ta bo'sh o'rin</div>
+        </div>
+        <div class="quick-card" onclick="goPage('pg-video','pg-home')">
+          <i class="ti ti-video"></i>
+          <div class="qt" data-k="about_us">Biz haqimizda</div>
+          <div class="qs" data-k="watch_v">Video ko'rish</div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <button class="nav-btn active" onclick="navTo('pg-home',this)"><i class="ti ti-home"></i><span data-k="nav_home">Bosh</span></button>
+      <button class="nav-btn" onclick="navTo('pg-jobs',this)"><i class="ti ti-briefcase"></i><span data-k="nav_jobs">Ish o'rinlar</span></button>
+      <button class="nav-btn" onclick="navTo('pg-video',this)"><i class="ti ti-video"></i><span data-k="nav_video">Video</span></button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ PAGE: JOBS ═══════════════════════ -->
+  <div class="page" id="pg-jobs">
+    <div class="topbar">
+      <div class="topbar-row">
+        <div>
+          <div class="topbar-title" data-k="open_vac">Bo'sh ish o'rinlari</div>
+          <div class="topbar-sub" data-k="jobs_count">9 ta vakansiya</div>
+        </div>
+        <div class="lang-btn" onclick="openLang()">
+          <i class="ti ti-world" style="font-size:14px;"></i>
+          <span class="langAll">UZ</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll">
+      <div class="search-wrap">
+        <i class="ti ti-search"></i>
+        <input type="text" id="jobSearch" data-k-ph="search_ph" placeholder="Ish qidirish..." oninput="renderJobs()">
+      </div>
+      <div class="chips">
+        <button class="chip on" onclick="setFilter('all',this)" data-k="all">Barchasi</button>
+        <button class="chip" onclick="setFilter('IT',this)">IT</button>
+        <button class="chip" onclick="setFilter('HR',this)">HR</button>
+        <button class="chip" onclick="setFilter('Marketing',this)" data-k="mkt">Marketing</button>
+        <button class="chip" onclick="setFilter('Design',this)" data-k="dsgn">Dizayn</button>
+      </div>
+      <div id="jobsList"></div>
+    </div>
+    <div class="bottom-nav">
+      <button class="nav-btn" onclick="navTo('pg-home',this)"><i class="ti ti-home"></i><span data-k="nav_home">Bosh</span></button>
+      <button class="nav-btn active" onclick="navTo('pg-jobs',this)"><i class="ti ti-briefcase"></i><span data-k="nav_jobs">Ish o'rinlar</span></button>
+      <button class="nav-btn" onclick="navTo('pg-video',this)"><i class="ti ti-video"></i><span data-k="nav_video">Video</span></button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ PAGE: FORM ═══════════════════════ -->
+  <div class="page" id="pg-form">
+    <div class="topbar">
+      <button class="back-btn" onclick="goBack('pg-jobs')">
+        <i class="ti ti-arrow-left" style="font-size:18px;"></i>
+        <span data-k="back">Orqaga</span>
+      </button>
+      <div class="topbar-title" data-k="apply">Ariza shakli</div>
+      <div class="topbar-sub" id="formPos">—</div>
+    </div>
+    <div class="scroll" id="formScroll">
+      <div class="step-bar">
+        <div class="sdot on" id="sd1"></div>
+        <div class="sdot" id="sd2"></div>
+        <div class="sdot" id="sd3"></div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div id="s1">
+        <div class="step-hl" data-k="step1_title">Shaxsiy ma'lumotlar</div>
+        <div class="fgroup">
+          <div class="flabel" data-k="fullname">To'liq ism</div>
+          <input class="finput" type="text" id="f_name" data-k-ph="name_ph"  type="text" id="f_name" required placeholder="Ismingizni kiriting">
+        </div>
+        <div class="fgroup">
+          <div class="flabel" data-k="phone">Telefon</div>
+          <input class="finput" type="tel" id="f_phone" class="finput" type="tel" id="f_phone"    pattern="\+998[0-9]{9}"required placeholder="+998 90 123 45 67">
+        </div>
+        <div class="fgroup">
+          <div class="flabel" data-k="email">E-mail</div>
+          <input class="finput" type="email" id="f_email" class="finput" type="email" id="f_email"
+       required placeholder="email@example.com">
+        </div>
+        <div class="fgroup">
+          <div class="flabel" data-k="exp_years">Tajriba (yil)</div>
+          <div class="xp-row">
+            <button class="xp-btn" onclick="pickXP(this,'0-1')">0-1</button>
+            <button class="xp-btn" onclick="pickXP(this,'1-3')">1-3</button>
+            <button class="xp-btn" onclick="pickXP(this,'3-5')">3-5</button>
+            <button class="xp-btn" onclick="pickXP(this,'5+')">5+</button>
+          </div>
+        </div>
+        <button class="main-btn" onclick="toStep(2)"><span data-k="next">Keyingi</span> <i class="ti ti-arrow-right"></i></button>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="s2" style="display:none;">
+        <div class="step-hl" data-k="step2_title">Kasbiy savollar</div>
+        <div class="fgroup">
+          <div class="flabel" data-k="q1">Nega aynan biz?</div>
+          <textarea class="finput" id="f_why" data-k-ph="q1_ph" placeholder="Kompaniyaga qiziqishingiz..."></textarea>
+        </div>
+        <div class="fgroup">
+          <div class="flabel" data-k="q2">Kuchli tomoningiz</div>
+          <textarea class="finput" id="f_str" data-k-ph="q2_ph" placeholder="Eng katta kuchli tomoningiz..."></textarea>
+        </div>
+        <div class="fgroup">
+          <div class="flabel" data-k="work_style">Ish uslubi</div>
+          <div class="radio-list">
+            <div class="radio-item" onclick="pickRadio(this,'Remote')"><div class="rdot"></div><span class="radio-txt" data-k="remote">Masofaviy</span></div>
+            <div class="radio-item" onclick="pickRadio(this,'Office')"><div class="rdot"></div><span class="radio-txt" data-k="office">Ofis</span></div>
+            <div class="radio-item" onclick="pickRadio(this,'Hybrid')"><div class="rdot"></div><span class="radio-txt" data-k="hybrid">Gibrid</span></div>
+          </div>
+        </div>
+        <button class="main-btn" onclick="toStep(3)"><span data-k="next">Keyingi</span> <i class="ti ti-arrow-right"></i></button>
+        <button class="sec-btn" onclick="toStep(1)"><i class="ti ti-arrow-left"></i> <span data-k="back">Orqaga</span></button>
+      </div>
+
+      <!-- STEP 3 -->
+      <div id="s3" style="display:none;">
+        <div class="step-hl" data-k="step3_title">Oxirgi qadam</div>
+        <div class="fgroup">
+          <div class="flabel" data-k="salary_exp">Kutilgan maosh (USD)</div>
+          <input class="finput" type="number" id="f_salary" placeholder="1500">
+        </div>
+        <div class="fgroup">
+          <div class="flabel" data-k="start_date">Qachon boshlashingiz mumkin?</div>
+          <input class="finput" type="date" id="f_date">
+        </div>
+        <div class="fgroup">
+          <div class="flabel" data-k="extra">Qo'shimcha ma'lumot</div>
+          <textarea class="finput" id="f_extra" data-k-ph="extra_ph" placeholder="GitHub, portfolio..." style="height:70px;"></textarea>
+        </div>
+        <div class="send-preview">
+          <div class="sp-title" data-k="will_send">Admin ga yuboriladi</div>
+          <div class="sp-row">📧 <span>hr-admin@techcorp.uz</span></div>
+          <div class="sp-row" data-k="resp_time">⏱ Javob: 1-3 ish kuni</div>
+        </div>
+        <button class="main-btn" onclick="submitForm()"><i class="ti ti-send"></i> <span data-k="send_btn">Arizani yuborish</span></button>
+        <button class="sec-btn" onclick="toStep(2)"><i class="ti ti-arrow-left"></i> <span data-k="back">Orqaga</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ PAGE: SUCCESS ═══════════════════════ -->
+  <div class="page" id="pg-success">
+    <div class="topbar">
+      <div class="topbar-title" data-k="sent_title">Ariza yuborildi!</div>
+    </div>
+    <div class="success-wrap">
+      <div class="success-circle"><i class="ti ti-check"></i></div>
+      <div class="success-h" data-k="congrats">Tabriklaymiz! 🎉</div>
+      <div class="success-p" data-k="success_msg">Arizangiz muvaffaqiyatli yuborildi. HR jamoamiz siz bilan tez orada bog'lanadi.</div>
+      <div class="success-box">
+        <div class="sb-row">📋 <span id="sJobName">—</span></div>
+        <div class="sb-row">👤 <span id="sName">—</span></div>
+        <div class="sb-row">📞 <span id="sPhone">—</span></div>
+        <div class="sb-row">📧 <span>hr-admin@techcorp.uz</span></div>
+      </div>
+      <button class="main-btn" style="margin-top:20px;" onclick="goPage('pg-jobs','pg-success')"><i class="ti ti-briefcase"></i> <span data-k="other_vac">Boshqa vakansiyalar</span></button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ PAGE: VIDEO ═══════════════════════ -->
+  <div class="page" id="pg-video">
+    <div class="topbar">
+      <div class="topbar-row">
+        <div>
+          <div class="topbar-title" data-k="video_title">Video materiallar</div>
+          <div class="topbar-sub" data-k="co_life">Kompaniya hayoti</div>
+        </div>
+        <div class="lang-btn" onclick="openLang()">
+          <i class="ti ti-world" style="font-size:14px;"></i>
+          <span class="langAll">UZ</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll">
+      <div class="vid-hero" onclick="playVid()" id="vidHero">
+        <div class="vid-bg"></div>
+        <div class="vid-overlay">
+          <div class="play-circle"><i class="ti ti-player-play"></i></div>
+          <div class="vid-caption" data-k="main_vid">TechCorp — Biz haqimizda</div>
+        </div>
+        <div class="vid-dur">4:32</div>
+      </div>
+
+      <div id="playerBox" style="display:none;" class="player-box">
+        <i class="ti ti-player-pause"></i>
+        <div class="pt" data-k="playing">Hozir ijro etilmoqda...</div>
+        <div class="prog-wrap"><div class="prog" id="prog"></div></div>
+        <button class="stop-btn" onclick="stopVid()" data-k="stop">To'xtatish</button>
+      </div>
+
+      <div class="section-lbl" data-k="other_vids">Boshqa videolar</div>
+      <div class="card">
+        <div class="vid-item" onclick="tapVid(this)">
+          <div class="vthumb" style="background:linear-gradient(135deg,#11998e,#38ef7d);"><i class="ti ti-users"></i></div>
+          <div><div class="vt" data-k="v2">Jamoamiz bilan tanishing</div><div class="vs">2:15 · 12K ko'rishlar</div></div>
+        </div>
+        <div class="vid-item" onclick="tapVid(this)">
+          <div class="vthumb" style="background:linear-gradient(135deg,#f7971e,#ffd200);"><i class="ti ti-building-office"></i></div>
+          <div><div class="vt" data-k="v3">Ofis Tashkent 2024</div><div class="vs">1:48 · 8K ko'rishlar</div></div>
+        </div>
+        <div class="vid-item" onclick="tapVid(this)">
+          <div class="vthumb" style="background:linear-gradient(135deg,#ee0979,#ff6a00);"><i class="ti ti-award"></i></div>
+          <div><div class="vt" data-k="v4">Mukofotlar & yutuqlar</div><div class="vs">3:22 · 5K ko'rishlar</div></div>
+        </div>
+        <div class="vid-item" onclick="tapVid(this)">
+          <div class="vthumb" style="background:linear-gradient(135deg,#1d976c,#93f9b9);"><i class="ti ti-device-laptop"></i></div>
+          <div><div class="vt" data-k="v5">Remote ish imkoniyatlari</div><div class="vs">2:55 · 9K ko'rishlar</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <button class="nav-btn" onclick="navTo('pg-home',this)"><i class="ti ti-home"></i><span data-k="nav_home">Bosh</span></button>
+      <button class="nav-btn" onclick="navTo('pg-jobs',this)"><i class="ti ti-briefcase"></i><span data-k="nav_jobs">Ish o'rinlar</span></button>
+      <button class="nav-btn active" onclick="navTo('pg-video',this)"><i class="ti ti-video"></i><span data-k="nav_video">Video</span></button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════ LANG SHEET ═══════════════════════ -->
+  <div class="sheet-wrap" id="langSheet" onclick="closeLangSheet(event)">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-title" data-k="choose_lang">Tilni tanlang</div>
+      <div class="lang-opt on" onclick="setLang('uz')"><span>🇺🇿 O'zbekcha</span><div class="lang-check"><i class="ti ti-check"></i></div></div>
+      <div class="lang-opt" onclick="setLang('ru')"><span>🇷🇺 Русский</span></div>
+      <div class="lang-opt" onclick="setLang('en')"><span>🇬🇧 English</span></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
