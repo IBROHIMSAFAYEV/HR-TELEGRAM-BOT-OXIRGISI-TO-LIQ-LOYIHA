@@ -12,7 +12,7 @@ if (tg) {
 // ── Lang data ──
 const L = {
   uz: {
-    hr_platform:"HR Platform", tagline:"Innovatsiya bilan kelajakni quramiz",
+    hr_platform:"HR Platform", tagline:"Kunleek Kompaniyasining BO'SH ISH O'RINLARI",
     employees:"Xodimlar", offices:"Do'konlar", founded:"Asos.",
     about_co:"Kompaniya haqida", industry:"Soha", hq:"Bosh ofis", website:"Veb-sayt", contact:"Aloqa",
     mission:"Missiya", mission_text:"Biz zamonaviy texnologiyalar orqali biznes va jamiyatni raqamlashtirish yo'lida ishlaymiz.",
